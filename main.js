@@ -1,33 +1,44 @@
-// //Events, generally user interaction triggers function.
-// function handleClick() {
-// 	console.log("clicked"); //console only
-// }
+/* Add another button element to the page and have the button text say "Display Message"
+Create a state variable named message using the useState hook and initialize the message to "" (empty string).
+Create another paragraph on the page and have it display the message state variable
+Create a function named displayMessage that sets the message state variable to "Message in the bottle"
+Associate the click event of the "Display Message" button with the displayMessage function.
+Verify it works. */
 
-// function App() {
-// 	return <button onClick={handleClick}>Click Me!</button>; //remove the parenthesis when calling the function otherwise it will automatically run the function.
-// }
+//component function
+function App() {
+	const [message, setMessage] = React.useState("");
 
-// ReactDOM.createRoot(document.getElementById("root")).render(<App />);
-
-function FruitListItem(props) {
-	function handleClick(id) {
-		console.log(`removed ${id}`);
+	//code
+	// function display() {
+	// 	alert("Boo");
+	// }
+	function displayMessage() {
+		setMessage("Message in a bottle.");
 	}
-	// return <li onClick={handleClick(props.fruit.id)}>{props.fruit.name} </li>;
-	return <li onClick={() => handleClick(props.fruit.id)}>{props.fruit.name} </li>;
+
+	//html
+	return (
+		<div>
+			<h2>
+				Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla ab architecto dolor placeat fugit explicabo ex!
+				Quam id ratione rerum veritatis ex explicabo, magnam totam dicta sapiente sint voluptas neque exercitationem
+				excepturi nihil cupiditate porro sunt quidem, beatae eos nulla veniam magni unde omnis? Inventore unde adipisci
+				dignissimos, aperiam explicabo reiciendis sapiente possimus culpa, repudiandae quia in voluptas. Fugit tempora
+				obcaecati modi cupiditate rerum assumenda similique, atque placeat maxime voluptate, deleniti voluptatum ipsam
+				consequatur iusto! Maiores nesciunt eveniet officia laudantium provident reiciendis voluptatem quaerat odit esse
+				minima. Quasi neque ab recusandae, sunt blanditiis tenetur aut veritatis nisi asperiores eos in.
+			</h2>
+			<button
+				onClick={() => {
+					displayMessage();
+				}}
+			>
+				Display
+			</button>
+			<h2>{message}</h2>
+		</div>
+	);
 }
 
-function FruitList(props) {
-	const fruitListItems = props.fruits.map((fruit) => <FruitListItem key={fruit.id} fruit={fruit} />);
-	return <ul>{fruitListItems}</ul>;
-}
-
-const data = [
-	{ id: 1, name: "apple" },
-	{ id: 2, name: "orange" },
-	{ id: 3, name: "blueberry" },
-	{ id: 4, name: "banana" },
-	{ id: 5, name: "kiwi" },
-];
-
-ReactDOM.createRoot(document.getElementById("root")).render(<FruitList fruits={data} />);
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
