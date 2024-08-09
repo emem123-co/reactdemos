@@ -23,5 +23,6 @@ function AccountHeader({user}) {
 
 ReactDOM.createRoot(document.getElementById("root")).render(<App />); //rendering a component is a component in an HTML tag, self closing.
 
+
 //components: upercase, not nested, returns JSX
 //event handlers: return void, nested
