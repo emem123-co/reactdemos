@@ -1,4 +1,5 @@
-const { useForm } = window.ReactHookForm;
+const { useState } = React;
+const { useForm } = ReactHookForm;
 
 function ContactUsForm() {
 	const {
@@ -7,69 +8,68 @@ function ContactUsForm() {
 		formState: { errors },
 	} = useForm();
 
-	const send = (data) => {
-		console.log(data);
-	};
+	function submit(formData) {
+		console.log("Form submitted.", formData);
+	}
 
 	return (
-		<div>
-			<h1 className="d-flex pb-4 pt-3 container" font="sans-serif">
-				DON'T CONTACT US
-			</h1>
-			<form className="container" onSubmit={handleSubmit(send)}>
-				<div>
-					<select className="form-select" {...register("department", { required: "Department is required." })}>
-						<option value="">Select department...</option>
-						<option value="hr">Human Resources</option>
-						<option value="pr">Public Relations</option>
-						<option value="sp">Support</option>
-					</select>
-				</div>
+		<form className="mt-4" onSubmit={handleSubmit(submit)}>
+			<div className="mb-3">
+				<label htmlFor="department" className="form-label">
+					Department
+				</label>
+				<select
+					id="department"
+					className={`form-select ${errors.department ? "is-invalid" : ""}`}
+					{...register("department", { required: "Department is required" })}
+				>
+					<option value="">Select...</option>
+					<option value="hr">Human Resources</option>
+					<option value="pr">Public Relations</option>
+					<option value="support">Support</option>
+					<option value="support">Sales</option>
+					<option value="support">IT</option>
+				</select>
+				{errors.department && <div className="invalid-feedback">{errors.department.message}</div>}
+			</div>
 
-				<br />
-				{errors.department && <p className="alert">{errors.department?.message}</p>}
+			<div className="mb-3">
+				<label htmlFor="message" className="form-label">
+					Message
+				</label>
+				<textarea
+					id="message"
+					className={`form-control ${errors.message ? "is-invalid" : ""}`}
+					{...register("message", { required: "Message is required" })}
+					cols="30"
+					rows="5"
+				/>
+				{errors.message && <div className="invalid-feedback">{errors.message.message}</div>}
+			</div>
 
-				<div className="py-3">
-					<textarea
-						className="form-control"
-						{...register("message", { required: "A message is required" })}
-						placeholder="Type message here..."
-					></textarea>
-				</div>
+			<div className="mb-3 form-check">
+				<input
+					type="checkbox"
+					id="agreedToTerms"
+					className={`form-check-input ${errors.agreedToTerms ? "is-invalid" : ""}`}
+					{...register("agreedToTerms", { required: "You must agree to the terms and conditions." })}
+				/>
+				<label htmlFor="agreedToTerms" className="form-check-label">
+					I agree to the terms and conditions.
+				</label>
+				{errors.agreedToTerms && <div className="invalid-feedback">{errors.agreedToTerms.message}</div>}
+			</div>
 
-				<br />
-				{errors.message && <p className="alert">{errors.message?.message}</p>}
-
-				<div className="pb-3">
-					<input
-						className="form-check-input border-black"
-						type="checkbox"
-						{...register("agreedToTerms", { required: "You must accept the terms and conditions." })}
-					/>
-					<label className="px-3" htmlFor="terms">
-						I agree to the terms and condtions.
-					</label>
-				</div>
-
-				<br />
-				{errors.agreedToTerms && <p className="error">{errors.agreedToTerms?.message}</p>}
-
-				<div className="d-flex gap-2 mt-5 justify-content-end">
-					<button className="btn btn-success" type="submit">
-						Submit
-					</button>
-					<button className="btn btn-outline-secondary" href="/main.js">
-						Cancel
-					</button>
-				</div>
-			</form>
-		</div>
+			<button type="submit" className="btn btn-primary">
+				Send
+			</button>
+		</form>
 	);
 }
 
 function App() {
 	return (
-		<div className="container d-flex mt-6 justify-content-center">
+		<div className="container">
 			<ContactUsForm />
 		</div>
 	);
