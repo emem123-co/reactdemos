@@ -1,1 +1,8 @@
-GET http://localhost:9000/teams/4
+GET http://localhost:9000/teams/
+
+### 404 Test
+# GET https://httpstat.us/404
+# GET https://httpstat.us/404
+
+# GET https://httpstat.us/401
+# GET https://httpstat.us/403

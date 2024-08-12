@@ -4,24 +4,6 @@
 	padding: 2rem;
 } */
 
-/* .bulls {
-	border: 1px solid orange;
-	width: 18rem;
-	padding: 2rem;
-}
-
-.heat {
-	border: 1px solid orange;
-	width: 18rem;
-	padding: 2rem;
-}
-
-.mavericks {
-	border: 1px solid orange;
-	width: 18rem;
-	padding: 2rem;
-} */
-
 .list {
 	display: flex;
 	gap: 2rem;
@@ -34,3 +16,5 @@
 	width: 9rem;
 	flex-wrap: wrap;
 }
+
+
