@@ -3,7 +3,8 @@
 	"version": "1.0.0",
 	"main": "main.js",
 	"scripts": {
-		"start": "serve -s -p 5000"
+		"start": "serve -s -p 5000",
+		"api": "json-server --watch api/db.json --port 9000"
 	},
 	"keywords": [],
 	"author": "",
