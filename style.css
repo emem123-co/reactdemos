@@ -1,8 +1,6 @@
-/* .card {
-	border: 1px solid orange;
+.card {
 	width: 18rem;
-	padding: 2rem;
-} */
+}
 
 .list {
 	display: flex;

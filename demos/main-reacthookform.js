@@ -59,10 +59,14 @@ function ContactUsForm() {
 				</label>
 				{errors.agreedToTerms && <div className="invalid-feedback">{errors.agreedToTerms.message}</div>}
 			</div>
-
-			<button type="submit" className="btn btn-primary">
-				Send
-			</button>
+			<div className="d-flex gap-2">
+				<button type="submit" className="btn btn-primary">
+					Send
+				</button>
+				<button type="submit" className="btn btn-primary">
+					Cancel
+				</button>
+			</div>
 		</form>
 	);
 }
